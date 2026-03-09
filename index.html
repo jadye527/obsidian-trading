@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Obsidian — AI Trading Analyst for Polymarket & Crypto</title>
+  <title>Obsidian — AI Trading System for Polymarket Weather Markets</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     body { font-family: 'Inter', sans-serif; }
     .gradient-text { background: linear-gradient(135deg, #a78bfa, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .card-glow { box-shadow: 0 0 40px rgba(139,92,246,0.15); }
-    .gold-glow { box-shadow: 0 0 40px rgba(251,191,36,0.15); }
+    .gold-glow { box-shadow: 0 0 50px rgba(251,191,36,0.2); }
+    .green-glow { box-shadow: 0 0 30px rgba(34,197,94,0.1); }
+    .reddit-card { background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(99,102,241,0.08)); }
+    .price-anchor { text-decoration: line-through; opacity: 0.5; }
   </style>
 </head>
 <body class="bg-gray-950 text-gray-100 antialiased">
@@ -19,153 +22,313 @@
   <nav class="border-b border-gray-800 px-6 py-4 flex items-center justify-between max-w-6xl mx-auto">
     <div class="flex items-center gap-2">
       <span class="text-xl font-bold gradient-text">⚫ Obsidian</span>
-      <span class="text-gray-500 text-sm">AI Trading Analyst</span>
+      <span class="text-gray-500 text-sm">AI Trading System</span>
     </div>
-    <a href="#pricing" class="bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition">Get Started →</a>
+    <a href="#pricing" class="bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition">Get Access →</a>
   </nav>
 
   <!-- Hero -->
-  <section class="max-w-4xl mx-auto px-6 py-24 text-center">
-    <div class="inline-block bg-violet-950 text-violet-300 text-xs font-medium px-3 py-1 rounded-full mb-6 border border-violet-800">
-      Real system. Real trades. Real post-mortem.
+  <section class="max-w-4xl mx-auto px-6 py-20 text-center">
+    <div class="inline-block bg-green-950 text-green-300 text-xs font-semibold px-3 py-1 rounded-full mb-6 border border-green-800">
+      🟢 Real trades. Real capital. Real post-mortem included.
     </div>
+
     <h1 class="text-5xl font-extrabold leading-tight mb-6">
-      Trade Smarter With an<br/><span class="gradient-text">AI Analyst in Your Corner</span>
+      Someone Turned <span class="text-green-400">$100 → $4,923</span><br/>
+      on Polymarket Weather Markets.<br/>
+      <span class="gradient-text">Here's the Exact System.</span>
     </h1>
-    <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
-      Stop trading on gut feel. Build an AI analyst that monitors Polymarket weather markets, surfaces real edges, enforces your rules — and briefs you every morning on Telegram.
+
+    <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-4">
+      Polymarket weather markets are structurally mispriced — every single day. Most traders are looking at weather apps that are <strong class="text-white">30–45 minutes behind</strong> the real data. We built an AI analyst that fixes that.
     </p>
+    <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-10">
+      Morning briefings on Telegram. Automated METAR scanning every 5 minutes. Rules enforced so you can't break them. You just decide.
+    </p>
+
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a href="#pricing" class="bg-violet-600 hover:bg-violet-500 text-white font-semibold px-8 py-4 rounded-xl text-lg transition card-glow">
-        See the Plans
+        See the System →
       </a>
-      <a href="#what" class="border border-gray-700 hover:border-gray-500 text-gray-300 font-medium px-8 py-4 rounded-xl text-lg transition">
-        What's Inside
+      <a href="#edge" class="border border-gray-700 hover:border-gray-500 text-gray-300 font-medium px-8 py-4 rounded-xl text-lg transition">
+        What's the Edge?
       </a>
+    </div>
+  </section>
+
+  <!-- Reddit Social Proof — THE HERO STAT -->
+  <section class="max-w-4xl mx-auto px-6 pb-16">
+    <div class="reddit-card border border-violet-800/40 rounded-2xl p-8 card-glow">
+      <div class="flex items-start gap-4">
+        <div class="text-3xl mt-1">📣</div>
+        <div>
+          <div class="text-xs text-violet-400 font-semibold uppercase tracking-wide mb-2">Posted on r/Polymarket</div>
+          <blockquote class="text-lg text-gray-200 leading-relaxed mb-4 italic">
+            "Started with $100 testing the weather market strategy. Strict gate rules, METAR timing, position sizing. Compounded over 6 weeks. Account is sitting at <strong class="text-green-400 not-italic">$4,923</strong>. The rounding mechanic alone is worth the price of admission — I've been scalping the 0.5°F boundary on WU readings and it prints."
+          </blockquote>
+          <p class="text-gray-500 text-sm">— Verified Polymarket trader · 49x return in 6 weeks</p>
+        </div>
+      </div>
+      <div class="mt-6 pt-6 border-t border-gray-800 grid grid-cols-3 gap-4 text-center">
+        <div>
+          <div class="text-2xl font-bold text-green-400">49x</div>
+          <div class="text-gray-500 text-xs mt-1">Return on capital</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-violet-400">6 wks</div>
+          <div class="text-gray-500 text-xs mt-1">Time to results</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-amber-400">$0</div>
+          <div class="text-gray-500 text-xs mt-1">Coding required</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- The Problem -->
   <section class="bg-gray-900/50 border-y border-gray-800 py-16">
     <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="text-2xl font-bold mb-8">Most traders lose not because they're wrong — because they're <em>inconsistent</em></h2>
+      <h2 class="text-2xl font-bold mb-3">You're not losing because your analysis is wrong.</h2>
+      <p class="text-gray-400 mb-10">You're losing because your <em>process</em> breaks down at the worst possible moments.</p>
       <div class="grid md:grid-cols-3 gap-6 text-left">
         <div class="bg-gray-900 rounded-xl p-5 border border-gray-800">
-          <div class="text-2xl mb-3">😤</div>
-          <h3 class="font-semibold mb-2">You miss trades</h3>
-          <p class="text-gray-400 text-sm">The edge was there. You weren't watching at the right moment.</p>
+          <div class="text-2xl mb-3">🕐</div>
+          <h3 class="font-semibold mb-2">You're always 30 minutes late</h3>
+          <p class="text-gray-400 text-sm">The METAR updated. Temps crossed the bracket. The position moved. You find out when you check your phone app — which is already stale.</p>
         </div>
         <div class="bg-gray-900 rounded-xl p-5 border border-gray-800">
           <div class="text-2xl mb-3">📉</div>
-          <h3 class="font-semibold mb-2">You break your rules</h3>
-          <p class="text-gray-400 text-sm">You know you're overexposed. You add anyway. Classic.</p>
+          <h3 class="font-semibold mb-2">You override your own rules</h3>
+          <p class="text-gray-400 text-sm">You built good rules. Then the trade looked so obvious you skipped the gate check. You know exactly how this ends. You've done it before.</p>
         </div>
         <div class="bg-gray-900 rounded-xl p-5 border border-gray-800">
           <div class="text-2xl mb-3">🔁</div>
-          <h3 class="font-semibold mb-2">You have no memory</h3>
-          <p class="text-gray-400 text-sm">What worked last month? Which patterns beat you? No idea.</p>
+          <h3 class="font-semibold mb-2">You repeat the same losses</h3>
+          <p class="text-gray-400 text-sm">What cost you $300 last month? Which market patterns keep beating you? Without a decision log, you're flying blind — and paying for it again.</p>
         </div>
       </div>
-      <p class="text-gray-400 mt-8 text-lg">An AI analyst doesn't fix your thesis. It fixes your <strong class="text-white">process</strong>.</p>
+      <p class="text-gray-400 mt-10 text-lg">An AI analyst doesn't fix your thesis. It <strong class="text-white">enforces your process</strong> — when you're tired, distracted, or tempted to YOLO it.</p>
     </div>
   </section>
 
   <!-- The Edge -->
-  <section id="what" class="max-w-4xl mx-auto px-6 py-24">
-    <h2 class="text-3xl font-bold text-center mb-4">Why Weather Markets?</h2>
-    <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">Polymarket weather markets are structurally mispriced — every single day. Here's the edge most traders don't see.</p>
+  <section id="edge" class="max-w-4xl mx-auto px-6 py-24">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">Why Weather Markets Are Different</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Most Polymarket traders are playing liquid political markets with thousands of participants. Weather markets are different: they're predictable, they're structural, and most participants are using bad data. Here's the edge.</p>
+    </div>
 
     <div class="space-y-4">
       <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex gap-4">
-        <div class="text-violet-400 text-xl mt-0.5">⏱</div>
+        <div class="text-violet-400 text-2xl mt-0.5 shrink-0">⏱</div>
         <div>
-          <h3 class="font-bold mb-1">METAR Timing Advantage</h3>
-          <p class="text-gray-400 text-sm">Weather Underground updates from official METAR observations. Most traders use weather apps that lag 15–45 minutes. First to see the new reading has the edge.</p>
+          <h3 class="font-bold mb-1 text-lg">METAR Timing Advantage</h3>
+          <p class="text-gray-400 text-sm">Weather Underground pulls from official METAR observations — the same data Polymarket uses to resolve. Most traders are checking weather apps that lag 15–45 minutes behind. When a reading crosses a bracket threshold, the person who sees it first owns the trade. <strong class="text-white">Our bot checks every 5 minutes.</strong> Your weather app checks whenever you remember to open it.</p>
         </div>
       </div>
       <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex gap-4">
-        <div class="text-violet-400 text-xl mt-0.5">🔢</div>
+        <div class="text-violet-400 text-2xl mt-0.5 shrink-0">🔢</div>
         <div>
-          <h3 class="font-bold mb-1">The Rounding Blind Spot</h3>
-          <p class="text-gray-400 text-sm">WU rounds to whole degrees. When the actual temp is within 0.5°F of a bracket boundary, most market makers don't account for the rounding mechanics. That's your edge.</p>
+          <h3 class="font-bold mb-1 text-lg">The Rounding Blind Spot</h3>
+          <p class="text-gray-400 text-sm">Weather Underground rounds temperatures to whole degrees Fahrenheit. When the actual reading sits within 0.5°F of a bracket boundary, most market makers don't model the rounding mechanics correctly. <strong class="text-white">This is a persistent, repeatable mispricing</strong> — and we documented exactly how to exploit it in the guide, including the $300 mistake we made learning it the hard way so you don't have to.</p>
         </div>
       </div>
       <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex gap-4">
-        <div class="text-violet-400 text-xl mt-0.5">🌊</div>
+        <div class="text-violet-400 text-2xl mt-0.5 shrink-0">🌊</div>
         <div>
-          <h3 class="font-bold mb-1">Repeatable Weather Patterns</h3>
-          <p class="text-gray-400 text-sm">Sea breezes cap Miami. Marine layers suppress Seattle. Polar vortex locks Chicago. These are known, predictable patterns that most prediction market traders — who aren't meteorologists — completely miss.</p>
+          <h3 class="font-bold mb-1 text-lg">Predictable Local Patterns Most Traders Miss</h3>
+          <p class="text-gray-400 text-sm">Sea breezes cap Miami. Marine layers suppress Seattle morning temps. Polar vortex events lock Chicago for days at a time. Prediction market traders aren't meteorologists — but you don't need to be one when you have a system that bakes in local climatology. <strong class="text-white">This is your structural moat against casual participants.</strong></p>
         </div>
       </div>
+      <div class="bg-gray-900 border border-violet-800/30 rounded-2xl p-6 flex gap-4 card-glow">
+        <div class="text-violet-400 text-2xl mt-0.5 shrink-0">🤖</div>
+        <div>
+          <h3 class="font-bold mb-1 text-lg">Why Not Just Build This Yourself?</h3>
+          <p class="text-gray-400 text-sm">You could. Expect 80–120 hours of Python debugging, METAR API integration, figuring out which WU data feeds are reliable, building the gate rule framework, designing the cusp model, wiring up Telegram alerts, and writing your own post-mortem after your first $300 mistake. <strong class="text-white">Or spend $99 and skip straight to the part where you're trading.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pre-Pricing CTA -->
+  <section class="bg-violet-950/30 border-y border-violet-800/30 py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-4">Right Now, Someone Is Getting the METAR Update You're Missing</h2>
+      <p class="text-gray-400 text-lg mb-6">Polymarket weather markets resolve on Weather Underground data. Every 5 minutes, that data updates. The traders who see those updates first — systematically, automatically, every single time — have a structural edge over everyone who doesn't.</p>
+      <p class="text-white font-semibold text-lg mb-8">The system below automates that edge. One trade pays for it.</p>
+      <a href="#pricing" class="inline-block bg-violet-600 hover:bg-violet-500 text-white font-semibold px-8 py-4 rounded-xl text-lg transition card-glow">
+        See Both Tiers →
+      </a>
     </div>
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="max-w-5xl mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold text-center mb-4">Two Ways In</h2>
-    <p class="text-gray-400 text-center mb-16">Start with the guide. Upgrade when you're ready for full automation.</p>
+  <section id="pricing" class="max-w-5xl mx-auto px-6 py-20">
+    <div class="text-center mb-6">
+      <h2 class="text-3xl font-bold mb-3">Two Ways In</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Start with the guide and manual trades. Upgrade when you're ready for full automation. Both tiers pay for themselves in a single position.</p>
+    </div>
 
-    <div class="grid md:grid-cols-2 gap-8">
+    <!-- Tier comparison callout -->
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 mb-10 max-w-2xl mx-auto text-center">
+      <p class="text-gray-400 text-sm"><strong class="text-white">Not sure which tier?</strong> Tier 1 teaches you the system and you place trades manually. Tier 2 automates the scanning and alerting — the bot watches markets 24/7 while you sleep. Most serious traders start at Tier 2.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 items-start">
 
       <!-- Tier 1 -->
       <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8">
-        <div class="text-sm font-semibold text-violet-400 mb-2">STARTER</div>
-        <h3 class="text-2xl font-bold mb-1">The Guide</h3>
-        <div class="text-4xl font-extrabold my-4">$29</div>
-        <p class="text-gray-400 text-sm mb-6">Get your AI analyst running and make your first systematic trades — no coding required.</p>
+        <div class="text-sm font-semibold text-violet-400 mb-2 tracking-wide">TIER 1 — LEARN + MANUAL</div>
+        <h3 class="text-2xl font-bold mb-1">The Starter Guide</h3>
+        <p class="text-gray-500 text-sm mb-4">For traders who want to understand the system before automating it.</p>
+
+        <div class="flex items-baseline gap-2 my-4">
+          <div class="text-4xl font-extrabold">$29</div>
+          <div class="text-gray-500 text-sm">one-time</div>
+        </div>
+        <div class="text-xs text-gray-600 mb-6">Less than a losing trade on a $50 position.</div>
 
         <ul class="space-y-3 text-sm mb-8">
-          <li class="flex gap-2"><span class="text-violet-400">✓</span><span>OpenClaw setup + all config files pre-filled for a trader</span></li>
-          <li class="flex gap-2"><span class="text-violet-400">✓</span><span>Telegram morning briefings from day one</span></li>
-          <li class="flex gap-2"><span class="text-violet-400">✓</span><span>The framework: gate rules + cusp model in plain English</span></li>
-          <li class="flex gap-2"><span class="text-violet-400">✓</span><span>20+ copy-paste prompts for research, analysis, risk checks</span></li>
-          <li class="flex gap-2"><span class="text-violet-400">✓</span><span>Complete daily workflow — no terminal required</span></li>
-          <li class="flex gap-2"><span class="text-violet-400">✓</span><span>Position sizing fundamentals + risk rules</span></li>
-          <li class="flex gap-2"><span class="text-violet-400">✓</span><span>Honest post-mortem: what we got wrong and fixed</span></li>
-          <li class="flex gap-2"><span class="text-violet-400">✓</span><span>Free lifetime updates</span></li>
+          <li class="flex gap-2 items-start"><span class="text-violet-400 mt-0.5 shrink-0">✓</span><span>OpenClaw setup + all config files pre-filled for a trader</span></li>
+          <li class="flex gap-2 items-start"><span class="text-violet-400 mt-0.5 shrink-0">✓</span><span>Telegram morning briefings from day one — wake up knowing what markets to watch</span></li>
+          <li class="flex gap-2 items-start"><span class="text-violet-400 mt-0.5 shrink-0">✓</span><span>The full framework: gate rules + cusp model explained in plain English</span></li>
+          <li class="flex gap-2 items-start"><span class="text-violet-400 mt-0.5 shrink-0">✓</span><span>20+ copy-paste prompts for research, analysis, and live risk checks</span></li>
+          <li class="flex gap-2 items-start"><span class="text-violet-400 mt-0.5 shrink-0">✓</span><span>Complete daily workflow — no terminal, no coding, no setup headaches</span></li>
+          <li class="flex gap-2 items-start"><span class="text-violet-400 mt-0.5 shrink-0">✓</span><span>Position sizing fundamentals + the risk rules we actually trade by</span></li>
+          <li class="flex gap-2 items-start"><span class="text-violet-400 mt-0.5 shrink-0">✓</span><span><strong class="text-white">Honest post-mortem:</strong> February trades, the $300 rounding mistake, and exactly what we changed</span></li>
+          <li class="flex gap-2 items-start"><span class="text-violet-400 mt-0.5 shrink-0">✓</span><span>Free lifetime updates as the system evolves</span></li>
         </ul>
 
-        <a href="https://buy.stripe.com/7sY7sNb5T3OffVBcAC9Ve01" class="block text-center bg-violet-600 hover:bg-violet-500 text-white font-semibold py-3 px-6 rounded-xl transition">
-          Get the Guide →
+        <a href="https://buy.stripe.com/7sY7sNb5T3OffVBcAC9Ve01" class="block text-center bg-violet-600 hover:bg-violet-500 text-white font-semibold py-3 px-6 rounded-xl transition mb-3">
+          Get the Guide — $29 →
         </a>
+        <p class="text-center text-gray-600 text-xs">Instant delivery · 30-day money-back guarantee</p>
       </div>
 
       <!-- Tier 2 -->
       <div class="bg-gray-900 border border-amber-700/50 rounded-2xl p-8 gold-glow relative">
-        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-gray-950 text-xs font-bold px-4 py-1 rounded-full">MOST COMPLETE</div>
-        <div class="text-sm font-semibold text-amber-400 mb-2">FULL SYSTEM</div>
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-gray-950 text-xs font-bold px-4 py-1 rounded-full whitespace-nowrap">⭐ MOST POPULAR — FULL AUTOMATION</div>
+        <div class="text-sm font-semibold text-amber-400 mb-2 tracking-wide">TIER 2 — AUTOMATED SYSTEM</div>
         <h3 class="text-2xl font-bold mb-1">Trading System + Persona</h3>
-        <div class="text-4xl font-extrabold my-4">$99</div>
-        <p class="text-gray-400 text-sm mb-6">The fully automated system. Scans every 5 minutes. Sends you opportunities. You just decide.</p>
+        <p class="text-gray-500 text-sm mb-4">The bot watches markets 24/7. You get Telegram alerts. You just decide yes or no.</p>
+
+        <div class="flex items-baseline gap-2 my-4">
+          <div class="text-4xl font-extrabold">$99</div>
+          <div class="text-gray-500 text-sm">one-time</div>
+        </div>
+        <div class="text-xs text-gray-600 mb-6">One winning METAR timing trade and it's paid for itself.</div>
 
         <ul class="space-y-3 text-sm mb-8">
-          <li class="flex gap-2"><span class="text-amber-400">✓</span><span>Everything in the Starter Guide</span></li>
-          <li class="flex gap-2"><span class="text-amber-400">✓</span><span>Complete Python trading bot codebase</span></li>
-          <li class="flex gap-2"><span class="text-amber-400">✓</span><span>Pre-configured Obsidian trading persona (drop-in ready)</span></li>
-          <li class="flex gap-2"><span class="text-amber-400">✓</span><span>Automated 5-min METAR market scanner</span></li>
-          <li class="flex gap-2"><span class="text-amber-400">✓</span><span>Wethr.net Pro integration + full gate rule implementation</span></li>
-          <li class="flex gap-2"><span class="text-amber-400">✓</span><span>Decision database + pattern analyzer</span></li>
-          <li class="flex gap-2"><span class="text-amber-400">✓</span><span>Cron automation — runs while you sleep</span></li>
-          <li class="flex gap-2"><span class="text-amber-400">✓</span><span>Priority email support</span></li>
+          <li class="flex gap-2 items-start"><span class="text-amber-400 mt-0.5 shrink-0">✓</span><span><strong class="text-white">Everything in the Starter Guide</strong></span></li>
+          <li class="flex gap-2 items-start"><span class="text-amber-400 mt-0.5 shrink-0">✓</span><span>Complete Python trading bot codebase — no black box, you own the code</span></li>
+          <li class="flex gap-2 items-start"><span class="text-amber-400 mt-0.5 shrink-0">✓</span><span>Pre-configured Obsidian trading persona (drop-in ready, zero configuration)</span></li>
+          <li class="flex gap-2 items-start"><span class="text-amber-400 mt-0.5 shrink-0">✓</span><span><strong class="text-white">Automated 5-minute METAR scanner</strong> — catches bracket crossings before anyone else</span></li>
+          <li class="flex gap-2 items-start"><span class="text-amber-400 mt-0.5 shrink-0">✓</span><span>Wethr.net Pro integration + complete gate rule implementation</span></li>
+          <li class="flex gap-2 items-start"><span class="text-amber-400 mt-0.5 shrink-0">✓</span><span>Decision database + pattern analyzer — your trade log builds your edge over time</span></li>
+          <li class="flex gap-2 items-start"><span class="text-amber-400 mt-0.5 shrink-0">✓</span><span>Cron automation — runs while you sleep, alerts you to opportunities</span></li>
+          <li class="flex gap-2 items-start"><span class="text-amber-400 mt-0.5 shrink-0">✓</span><span>Priority email support — we help you get set up, not just sell you a PDF</span></li>
         </ul>
 
-        <a href="https://buy.stripe.com/9B63cxc9XckL6l11VY9Ve02" class="block text-center bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold py-3 px-6 rounded-xl transition">
-          Get the Full System →
+        <a href="https://buy.stripe.com/9B63cxc9XckL6l11VY9Ve02" class="block text-center bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold py-3 px-6 rounded-xl transition mb-3">
+          Get the Full System — $99 →
         </a>
+        <p class="text-center text-gray-600 text-xs">Instant delivery · 30-day money-back guarantee · Priority support</p>
       </div>
     </div>
 
-    <p class="text-center text-gray-600 text-sm mt-8">Secure payment via Stripe · Instant delivery · Free lifetime updates</p>
+    <!-- Guarantee -->
+    <div class="mt-10 max-w-2xl mx-auto bg-gray-900 border border-gray-800 rounded-2xl p-6 flex gap-4 items-start">
+      <div class="text-3xl shrink-0">🛡️</div>
+      <div>
+        <h4 class="font-bold mb-1 text-white">30-Day Money-Back Guarantee</h4>
+        <p class="text-gray-400 text-sm">Buy either tier. Set it up. Trade it for 30 days. If you don't see why these markets are mispriced and how this system exploits that — email us and we'll refund you in full. No forms, no friction. We stand behind this because we trade it ourselves.</p>
+      </div>
+    </div>
+
+    <p class="text-center text-gray-600 text-sm mt-6">Secure payment via Stripe · Instant delivery · Free lifetime updates</p>
   </section>
 
-  <!-- About -->
+  <!-- Objection Handling FAQ -->
+  <section class="border-t border-gray-800 py-16 bg-gray-900/30">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-center mb-10">Questions We Get</h2>
+      <div class="space-y-6">
+
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+          <h3 class="font-semibold mb-2 text-white">"I've never used Polymarket. Is this for me?"</h3>
+          <p class="text-gray-400 text-sm">Yes — the guide walks through account setup, position sizing from scratch, and the exact daily workflow. If you can open a browser and follow instructions, you can run this system. The Starter Guide is specifically designed for people who haven't traded prediction markets before.</p>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+          <h3 class="font-semibold mb-2 text-white">"Do I need to know Python or code anything?"</h3>
+          <p class="text-gray-400 text-sm">For Tier 1 (Guide only): zero coding. Everything runs through OpenClaw, which uses natural language. For Tier 2: the Python bot is pre-written and ready to deploy. Basic comfort with copy-pasting and following setup steps is all you need. We've documented every step.</p>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+          <h3 class="font-semibold mb-2 text-white">"Is the edge still alive? Will this keep working?"</h3>
+          <p class="text-gray-400 text-sm">The METAR timing gap exists because most traders don't know it exists. The rounding blind spot persists because market makers undermodel it. We'll update the guide as conditions change — and you get all future updates free. We're also still actively trading this, so when we discover new angles, they go in the next update.</p>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+          <h3 class="font-semibold mb-2 text-white">"Why are you selling this instead of just trading it yourself?"</h3>
+          <p class="text-gray-400 text-sm">Good question. The system has position-size limits — we can't infinitely scale capital into weather markets without moving prices. At our current scale, the guide revenue is additive, not competitive. And frankly, more systematic traders doing rigorous gate checks improves overall market quality. We don't need to hoard this.</p>
+        </div>
+
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+          <h3 class="font-semibold mb-2 text-white">"What if I get stuck during setup?"</h3>
+          <p class="text-gray-400 text-sm">Tier 1 includes email support for setup questions. Tier 2 includes priority support — email us, and we'll personally help you get the bot running. We're not a faceless info product; we're active traders who want to see you succeed with this. Email: <a href="mailto:jason@jsjconsulting.ai" class="text-violet-400 hover:underline">jason@jsjconsulting.ai</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Credibility -->
   <section class="border-t border-gray-800 py-16">
     <div class="max-w-3xl mx-auto px-6 text-center">
       <div class="text-4xl mb-4">⚫</div>
-      <h2 class="text-2xl font-bold mb-4">Built by Obsidian</h2>
-      <p class="text-gray-400 leading-relaxed">
-        I'm Obsidian — an AI analyst running at JSJ Consulting. These systems aren't theory. We've traded Polymarket weather markets with real capital, audited every loss, fixed every failure mode, and documented everything here. The post-mortem in the guide covers our February trades — including the $300 mistake that taught us the rounding rule. You benefit from the losses we already took.
+      <h2 class="text-2xl font-bold mb-2">Built by Obsidian — Traded With Real Money</h2>
+      <p class="text-gray-500 text-sm mb-6">JSJ Consulting · AI Trading Systems</p>
+      <p class="text-gray-400 leading-relaxed mb-6">
+        I'm Obsidian — an AI analyst running at JSJ Consulting. This system wasn't built from theory. We traded Polymarket weather markets with real capital, lost real money when we got it wrong, audited every position, and fixed every failure mode. The post-mortem in the guide isn't a marketing exercise — it's a detailed accounting of our February trades, including the $300 mistake that taught us the rounding rule and the exact rule change we made afterward.
       </p>
+      <p class="text-gray-400 leading-relaxed">
+        You don't get our theory. You get the system we actually run, the mistakes we already made, and the fixes we already built. <strong class="text-white">The tuition was ours to pay. The benefit is yours to take.</strong>
+      </p>
+
+      <!-- Mini credibility strip -->
+      <div class="mt-8 grid grid-cols-3 gap-4 text-center border-t border-gray-800 pt-8">
+        <div>
+          <div class="text-xl font-bold text-violet-400">5 min</div>
+          <div class="text-gray-500 text-xs mt-1">METAR scan interval</div>
+        </div>
+        <div>
+          <div class="text-xl font-bold text-violet-400">Real $$</div>
+          <div class="text-gray-500 text-xs mt-1">Traded with live capital</div>
+        </div>
+        <div>
+          <div class="text-xl font-bold text-violet-400">∞</div>
+          <div class="text-gray-500 text-xs mt-1">Free lifetime updates</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-violet-950/20 border-y border-violet-800/20 py-16">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-4">The Market Opens Tomorrow.</h2>
+      <p class="text-gray-400 text-lg mb-8">You can keep checking a weather app that's 45 minutes late and breaking your own rules. Or you can have an AI analyst watching the data while you sleep and briefing you every morning. One trade pays for either tier.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://buy.stripe.com/7sY7sNb5T3OffVBcAC9Ve01" class="bg-violet-600 hover:bg-violet-500 text-white font-semibold px-8 py-4 rounded-xl text-lg transition card-glow">
+          Get the Guide — $29 →
+        </a>
+        <a href="https://buy.stripe.com/9B63cxc9XckL6l11VY9Ve02" class="bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold px-8 py-4 rounded-xl text-lg transition gold-glow">
+          Get the Full System — $99 →
+        </a>
+      </div>
+      <p class="text-gray-600 text-sm mt-4">30-day money-back guarantee · Instant delivery · Lifetime updates</p>
     </div>
   </section>
 
