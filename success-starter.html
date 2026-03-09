@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download Your Guide — Obsidian</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0a0a0f;
+      color: #e8e8f0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .card {
+      background: linear-gradient(135deg, #12121e 0%, #1a1a2e 100%);
+      border: 1px solid #4a3f7a;
+      border-radius: 16px;
+      padding: 3rem;
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+    }
+    .check {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #c9b8ff, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: #9ca3af;
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+    .download-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #7c3aed, #5b21b6);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 1rem 2.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      margin-bottom: 2rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
+    }
+    .steps {
+      background: rgba(255,255,255,0.04);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    .steps h3 {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: #a78bfa;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .steps ol {
+      padding-left: 1.25rem;
+      color: #c4b5fd;
+      line-height: 1.9;
+    }
+    .support {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    .support a {
+      color: #a78bfa;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="check">✅</div>
+    <h1>Payment Confirmed</h1>
+    <p class="subtitle">Your <strong>AI Trading Analyst: Starter Guide</strong> is ready to download. Save it somewhere you'll actually use it.</p>
+
+    <a class="download-btn" href="pdfs/obsidian-starter-guide.md" download="obsidian-starter-guide.md">
+      ⬇️ Download Your Guide
+    </a>
+
+    <div class="steps">
+      <h3>Get Started in 3 Steps</h3>
+      <ol>
+        <li>Open the guide and read Chapter 1 first</li>
+        <li>Set up your OpenClaw + Telegram connection (Chapter 2)</li>
+        <li>Run your first METAR briefing prompt (Chapter 3)</li>
+      </ol>
+    </div>
+
+    <p class="support">
+      Questions? Email <a href="mailto:support@obsidian.jasoncdye.com">support@obsidian.jasoncdye.com</a>
+    </p>
+  </div>
+</body>
+</html>
