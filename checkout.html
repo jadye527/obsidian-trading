@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Obsidian — Checkout</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #a78bfa, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .card-glow { box-shadow: 0 0 40px rgba(139,92,246,0.15); }
+
+    /* Stripe Elements styling */
+    #payment-element {
+      margin-bottom: 24px;
+    }
+
+    /* Product card selected state */
+    .product-card { cursor: pointer; transition: all 0.2s; }
+    .product-card.selected {
+      border-color: #7c3aed !important;
+      box-shadow: 0 0 0 2px #7c3aed, 0 0 30px rgba(124,58,237,0.2);
+    }
+    .product-card:hover:not(.selected) {
+      border-color: #4b5563;
+    }
+
+    /* Spinner */
+    .spinner {
+      display: inline-block;
+      width: 18px; height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Success page */
+    #success-page { display: none; }
+
+    /* Download pulse */
+    @keyframes pulse-green {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(34,197,94,0); }
+    }
+    .download-btn { animation: pulse-green 2s ease-in-out infinite; }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100 antialiased min-h-screen">
+
+  <!-- Nav -->
+  <nav class="border-b border-gray-800 px-6 py-4">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <span class="text-xl font-bold gradient-text">⚫ Obsidian</span>
+        <span class="text-gray-500 text-sm">AI Trading Analyst</span>
+      </a>
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+        </svg>
+        Secured by Stripe
+      </div>
+    </div>
+  </nav>
+
+  <!-- CHECKOUT PAGE -->
+  <div id="checkout-page" class="max-w-2xl mx-auto px-6 py-12">
+
+    <div class="text-center mb-10">
+      <h1 class="text-3xl font-bold mb-2">Get Your Trading Guide</h1>
+      <p class="text-gray-400">Instant PDF delivery after payment. No subscription, no fluff.</p>
+    </div>
+
+    <!-- Step 1: Product Selection -->
+    <div class="mb-8">
+      <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Step 1 — Choose Your Guide</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <!-- Starter Guide -->
+        <div class="product-card selected bg-gray-900 border-2 border-violet-600 rounded-xl p-5"
+             data-product="starter" data-price="2900" data-price-display="$29"
+             data-name="Obsidian Starter Guide"
+             onclick="selectProduct(this)">
+          <div class="flex items-start justify-between mb-3">
+            <div>
+              <div class="text-xs font-medium text-violet-400 mb-1">STARTER</div>
+              <div class="text-lg font-bold">Starter Guide</div>
+            </div>
+            <div class="text-2xl font-extrabold">$29</div>
+          </div>
+          <ul class="text-sm text-gray-400 space-y-1.5">
+            <li class="flex items-center gap-2"><span class="text-violet-400">✓</span> METAR market analysis framework</li>
+            <li class="flex items-center gap-2"><span class="text-violet-400">✓</span> 5 core trade setups explained</li>
+            <li class="flex items-center gap-2"><span class="text-violet-400">✓</span> Risk management rules</li>
+            <li class="flex items-center gap-2"><span class="text-violet-400">✓</span> Quick-start checklist</li>
+          </ul>
+          <div class="mt-4 text-xs text-gray-600">PDF • ~45 pages</div>
+        </div>
+
+        <!-- Full System -->
+        <div class="product-card bg-gray-900 border-2 border-gray-700 rounded-xl p-5 relative"
+             data-product="full" data-price="9900" data-price-display="$99"
+             data-name="Obsidian Full System"
+             onclick="selectProduct(this)">
+          <div class="absolute -top-3 right-4 bg-yellow-400 text-gray-950 text-xs font-bold px-3 py-1 rounded-full">BEST VALUE</div>
+          <div class="flex items-start justify-between mb-3">
+            <div>
+              <div class="text-xs font-medium text-yellow-400 mb-1">COMPLETE</div>
+              <div class="text-lg font-bold">Full System</div>
+            </div>
+            <div class="text-2xl font-extrabold">$99</div>
+          </div>
+          <ul class="text-sm text-gray-400 space-y-1.5">
+            <li class="flex items-center gap-2"><span class="text-yellow-400">✓</span> Everything in Starter</li>
+            <li class="flex items-center gap-2"><span class="text-yellow-400">✓</span> Full AI agent build guide</li>
+            <li class="flex items-center gap-2"><span class="text-yellow-400">✓</span> Telegram bot setup (step-by-step)</li>
+            <li class="flex items-center gap-2"><span class="text-yellow-400">✓</span> Live trade log + post-mortems</li>
+            <li class="flex items-center gap-2"><span class="text-yellow-400">✓</span> OpenClaw workflow templates</li>
+          </ul>
+          <div class="mt-4 text-xs text-gray-600">PDF + Templates • ~120 pages</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Step 2: Payment -->
+    <div class="mb-8">
+      <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Step 2 — Payment Details</h2>
+      <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 card-glow">
+
+        <!-- Order summary -->
+        <div id="order-summary" class="flex items-center justify-between mb-5 pb-5 border-b border-gray-800">
+          <div>
+            <div id="summary-name" class="font-semibold">Obsidian Starter Guide</div>
+            <div class="text-sm text-gray-500">One-time payment • Instant download</div>
+          </div>
+          <div id="summary-price" class="text-2xl font-bold gradient-text">$29</div>
+        </div>
+
+        <!-- Stripe Elements mount point -->
+        <div id="payment-element"></div>
+
+        <!-- Error message -->
+        <div id="payment-error" class="hidden mb-4 p-3 bg-red-950 border border-red-800 rounded-lg text-red-400 text-sm flex items-center gap-2">
+          <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+          </svg>
+          <span id="error-text"></span>
+        </div>
+
+        <!-- Submit button -->
+        <button id="submit-btn" onclick="handlePayment()" class="w-full bg-violet-600 hover:bg-violet-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-xl text-lg transition flex items-center justify-center gap-3">
+          <span id="btn-text">Pay $29 — Get Instant Access</span>
+          <span id="btn-spinner" class="hidden spinner"></span>
+        </button>
+
+        <div class="mt-4 flex items-center justify-center gap-4 text-xs text-gray-600">
+          <span class="flex items-center gap-1">
+            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+            256-bit SSL
+          </span>
+          <span>•</span>
+          <span>Powered by Stripe</span>
+          <span>•</span>
+          <span>No recurring charges</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SUCCESS PAGE -->
+  <div id="success-page" class="max-w-2xl mx-auto px-6 py-12">
+
+    <!-- Confetti-style header -->
+    <div class="text-center mb-10">
+      <div class="text-6xl mb-4">🎉</div>
+      <h1 class="text-3xl font-bold mb-2">Payment Successful!</h1>
+      <p class="text-gray-400">Your guide is ready. Download it below and start trading smarter today.</p>
+    </div>
+
+    <!-- Download card -->
+    <div class="bg-gray-900 border border-green-800/50 rounded-xl p-8 mb-6 text-center" style="box-shadow: 0 0 40px rgba(34,197,94,0.08)">
+      <div class="w-16 h-16 bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+      </div>
+      <div id="success-product-name" class="text-xl font-bold mb-1">Obsidian Starter Guide</div>
+      <div class="text-sm text-gray-500 mb-6">PDF • Ready to download</div>
+      <a id="download-btn" href="#" class="download-btn inline-flex items-center gap-3 bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-8 rounded-xl text-lg transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17v3a1 1 0 001 1h16a1 1 0 001-1v-3"/>
+        </svg>
+        Download Your Guide (PDF)
+      </a>
+      <p class="mt-4 text-xs text-gray-600">Link is valid for 24 hours. Check your email for a permanent copy.</p>
+    </div>
+
+    <!-- Setup Instructions -->
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-6">
+      <h2 class="font-bold text-lg mb-4 flex items-center gap-2">
+        <span>📋</span> Getting Started
+      </h2>
+      <div class="space-y-4">
+        <div class="flex gap-4">
+          <div class="w-8 h-8 bg-violet-900 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold text-violet-300">1</div>
+          <div>
+            <div class="font-medium mb-1">Download and read Section 1 first</div>
+            <div class="text-sm text-gray-400">The METAR framework is the foundation. Don't skip it even if you're eager to trade.</div>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-8 h-8 bg-violet-900 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold text-violet-300">2</div>
+          <div>
+            <div class="font-medium mb-1">Set up your Polymarket account</div>
+            <div class="text-sm text-gray-400">You need USDC in your wallet. The guide covers funding and minimum position sizing.</div>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-8 h-8 bg-violet-900 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold text-violet-300">3</div>
+          <div>
+            <div class="font-medium mb-1">Paper trade your first week</div>
+            <div class="text-sm text-gray-400">Track your calls in a spreadsheet before risking real money. The edge compounds over time.</div>
+          </div>
+        </div>
+        <div id="full-system-step" class="flex gap-4 hidden">
+          <div class="w-8 h-8 bg-yellow-900 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold text-yellow-300">4</div>
+          <div>
+            <div class="font-medium mb-1">Set up your Telegram bot (Full System)</div>
+            <div class="text-sm text-gray-400">Section 4 walks you through deploying your AI agent on OpenClaw. Takes ~30 minutes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Support -->
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 text-center">
+      <div class="text-gray-400 text-sm mb-3">Questions? We're here to help.</div>
+      <a href="mailto:support@obsidian.ai" class="inline-flex items-center gap-2 text-violet-400 hover:text-violet-300 font-medium transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        support@obsidian.ai
+      </a>
+      <div class="text-gray-600 text-xs mt-2">Typically respond within a few hours</div>
+    </div>
+
+  </div>
+
+  <script>
+    // ============================================================
+    // CONFIGURATION — update these before going live
+    // ============================================================
+    const STRIPE_PUBLISHABLE_KEY = 'pk_live_51T8vS3PYEdq45nxzSX1hU2nMqf1ammCQ
+    const BACKEND_URL = 'https://your-backend-url.com'; // Where checkout-handler.js is deployed (e.g. Railway, Render, Vercel)
+    // ============================================================
+
+    const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+    let elements = null;
+    let selectedProduct = {
+      id: 'starter',
+      price: 2900,
+      priceDisplay: '$29',
+      name: 'Obsidian Starter Guide'
+    };
+
+    // Initialize Stripe Elements on load
+    async function initStripeElements() {
+      try {
+        // Create payment intent from backend
+        const res = await fetch(`${BACKEND_URL}/create-payment-intent`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            productId: selectedProduct.id,
+            amount: selectedProduct.price
+          })
+        });
+
+        if (!res.ok) throw new Error('Failed to initialize payment');
+        const { clientSecret } = await res.json();
+
+        elements = stripe.elements({
+          clientSecret,
+          appearance: {
+            theme: 'night',
+            variables: {
+              colorPrimary: '#7c3aed',
+              colorBackground: '#111827',
+              colorText: '#f3f4f6',
+              colorDanger: '#ef4444',
+              fontFamily: 'Inter, system-ui, sans-serif',
+              borderRadius: '8px',
+              spacingUnit: '4px',
+            }
+          }
+        });
+
+        const paymentElement = elements.create('payment');
+        paymentElement.mount('#payment-element');
+
+      } catch (err) {
+        showError('Could not load payment form. Please refresh and try again.');
+        console.error(err);
+      }
+    }
+
+    // Product selection
+    function selectProduct(card) {
+      // Update UI
+      document.querySelectorAll('.product-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+
+      // Update selected product
+      selectedProduct = {
+        id: card.dataset.product,
+        price: parseInt(card.dataset.price),
+        priceDisplay: card.dataset.priceDisplay,
+        name: card.dataset.name
+      };
+
+      // Update summary
+      document.getElementById('summary-name').textContent = selectedProduct.name;
+      document.getElementById('summary-price').textContent = selectedProduct.priceDisplay;
+      document.getElementById('btn-text').textContent = `Pay ${selectedProduct.priceDisplay} — Get Instant Access`;
+
+      // Reinitialize elements with new payment intent
+      document.getElementById('payment-element').innerHTML = '';
+      elements = null;
+      initStripeElements();
+    }
+
+    // Handle payment submission
+    async function handlePayment() {
+      if (!elements) return;
+
+      setLoading(true);
+      clearError();
+
+      const { error, paymentIntent } = await stripe.confirmPayment({
+        elements,
+        redirect: 'if_required',
+        confirmParams: {
+          return_url: window.location.href, // Fallback for redirect-based methods
+        }
+      });
+
+      if (error) {
+        // Card declined, validation error, etc.
+        if (error.type !== 'validation_error') {
+          showError(error.message);
+        }
+        setLoading(false);
+      } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+        // Payment confirmed — show success
+        showSuccessPage(paymentIntent.id);
+      } else {
+        showError('Something went wrong. Please try again or contact support.');
+        setLoading(false);
+      }
+    }
+
+    // Show success page
+    async function showSuccessPage(paymentIntentId) {
+      // Fetch download token from backend
+      let downloadUrl = '#';
+      try {
+        const res = await fetch(`${BACKEND_URL}/get-download-link`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paymentIntentId, productId: selectedProduct.id })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          downloadUrl = data.downloadUrl;
+        }
+      } catch (err) {
+        console.error('Could not fetch download link:', err);
+        // Fall back to static path — handler can also serve the PDF directly
+        downloadUrl = `${BACKEND_URL}/download/${selectedProduct.id}?token=${paymentIntentId}`;
+      }
+
+      // Update success page content
+      document.getElementById('success-product-name').textContent = selectedProduct.name;
+      document.getElementById('download-btn').href = downloadUrl;
+
+      // Show Full System extra step if applicable
+      if (selectedProduct.id === 'full') {
+        document.getElementById('full-system-step').classList.remove('hidden');
+      }
+
+      // Swap pages
+      document.getElementById('checkout-page').style.display = 'none';
+      document.getElementById('success-page').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    // Handle redirect-based payment return (e.g. bank redirect)
+    async function handleReturnFromRedirect() {
+      const url = new URL(window.location.href);
+      const paymentIntentId = url.searchParams.get('payment_intent');
+      const clientSecret = url.searchParams.get('payment_intent_client_secret');
+      const productId = url.searchParams.get('product') || 'starter';
+
+      if (paymentIntentId && clientSecret) {
+        // Update selected product from URL param
+        selectedProduct.id = productId;
+        selectedProduct.name = productId === 'full' ? 'Obsidian Full System' : 'Obsidian Starter Guide';
+
+        const { paymentIntent } = await stripe.retrievePaymentIntent(clientSecret);
+        if (paymentIntent.status === 'succeeded') {
+          showSuccessPage(paymentIntentId);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // UI helpers
+    function setLoading(loading) {
+      const btn = document.getElementById('submit-btn');
+      const text = document.getElementById('btn-text');
+      const spinner = document.getElementById('btn-spinner');
+      btn.disabled = loading;
+      text.textContent = loading ? 'Processing...' : `Pay ${selectedProduct.priceDisplay} — Get Instant Access`;
+      spinner.classList.toggle('hidden', !loading);
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('payment-error');
+      document.getElementById('error-text').textContent = msg;
+      el.classList.remove('hidden');
+    }
+
+    function clearError() {
+      document.getElementById('payment-error').classList.add('hidden');
+    }
+
+    // Boot
+    (async () => {
+      const wasRedirect = await handleReturnFromRedirect();
+      if (!wasRedirect) {
+        initStripeElements();
+      }
+    })();
+  </script>
+
+</body>
+</html>
