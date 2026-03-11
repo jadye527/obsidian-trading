@@ -25,20 +25,20 @@ convert_guide() {
     --self-contained \
     -o "$output_html" 2>/dev/null
 
-  # Inject the CSS directly into the HTML (self-contained)
-  # Then convert to PDF
+  # Fix internal links: wkhtmltopdf needs full file path for internal anchors
+  # Replace href="#section" with href="file:///path/to/file.html#section"
+  sed -i "s|href=\"#|href=\"file://${SCRIPT_DIR}/${output_html}#|g" "$output_html"
+
+  # Convert to PDF with internal link support
   wkhtmltopdf \
     --enable-local-file-access \
+    --enable-internal-links \
     --page-size Letter \
     --margin-top 20mm \
     --margin-bottom 20mm \
     --margin-left 18mm \
     --margin-right 18mm \
     --encoding utf-8 \
-    --print-media-type \
-    --footer-center "[page]" \
-    --footer-font-size 9 \
-    --footer-spacing 10 \
     "$output_html" "$output_pdf"
 
   echo "  → $output_pdf ($(du -h "$output_pdf" | cut -f1))"

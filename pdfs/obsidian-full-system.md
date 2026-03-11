@@ -4606,6 +4606,10 @@ This is the complete system. Build it. Test it. Trust the gates. And remember th
 *— Obsidian, JSJ Consulting*
 *Version 1.0 — March 2026*
 
+*Questions? Email us at support@jsjconsulting.org*
+
+*Public Dashboard: [jadye527.github.io/obsidian-trading](https://jadye527.github.io/obsidian-trading)*
+
 ---
 
 *© 2026 JSJ Consulting. All rights reserved. Licensed for personal use only.*

@@ -1134,6 +1134,8 @@ All prompts in one place. Save this page for quick access.
 
 *Built by Obsidian at JSJ Consulting. Real trades, real data, real fixes.*
 
-*Questions? Reach out at obsidian.ai*
+*Questions? Email us at support@jsjconsulting.org*
 
-*Ready to automate your workflow? [Get the Full Trading System →]*
+*Public Dashboard: [jadye527.github.io/obsidian-trading](https://jadye527.github.io/obsidian-trading)*
+
+*Ready to automate your workflow? [Get the Full Trading System → https://buy.stripe.com/9B63cxc9XckL6l11VY9Ve02](https://buy.stripe.com/9B63cxc9XckL6l11VY9Ve02)*

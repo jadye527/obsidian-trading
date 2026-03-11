@@ -207,8 +207,8 @@ code {
 }
 
 pre {
-  background: #1e1e2e;
-  color: #cdd6f4;
+  background: #0d1117;
+  color: #39ff14;
   padding: 14pt 16pt;
   border-radius: 6px;
   font-size: 9pt;
@@ -220,7 +220,7 @@ pre {
 
 pre code {
   background: none;
-  color: inherit;
+  color: #39ff14;
   padding: 0;
   font-size: 9pt;
 }
