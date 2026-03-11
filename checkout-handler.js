@@ -75,6 +75,9 @@ if (!STRIPE_SECRET_KEY) {
 const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2024-06-20' });
 const app    = express();
 
+// Trust proxy (Render terminates SSL at their load balancer)
+app.set('trust proxy', 1);
+
 // CORS — restrict to your frontend domain in production
 app.use(cors({
   origin: [FRONTEND_URL, 'http://localhost:3000', 'http://127.0.0.1:5500'],
