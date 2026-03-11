@@ -37,10 +37,10 @@ const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 const PORT                  = process.env.PORT || 3001;
 const FRONTEND_URL          = process.env.FRONTEND_URL || 'https://obsidian.ai';
 
-// PDF file paths — place your PDF files here
+// Guide file paths
 const PDF_PATHS = {
-  starter: process.env.PDF_STARTER || path.join(__dirname, 'pdfs', 'obsidian-starter-guide.pdf'),
-  full:    process.env.PDF_FULL    || path.join(__dirname, 'pdfs', 'obsidian-full-system.pdf'),
+  starter: process.env.PDF_STARTER || path.join(__dirname, 'pdfs', 'obsidian-starter-guide.md'),
+  full:    process.env.PDF_FULL    || path.join(__dirname, 'pdfs', 'obsidian-full-system.md'),
 };
 
 // Product catalog — matches checkout.html product cards
@@ -226,9 +226,11 @@ app.get('/download/:productId', (req, res) => {
   }
 
   const product = PRODUCTS[productId];
-  const fileName = product.name.replace(/\s+/g, '-').toLowerCase() + '.pdf';
+  const ext = path.extname(pdfPath);
+  const isMarkdown = ext === '.md';
+  const fileName = product.name.replace(/\s+/g, '-').toLowerCase() + (isMarkdown ? '.md' : '.pdf');
 
-  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Type', isMarkdown ? 'text/markdown' : 'application/pdf');
   res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
   res.setHeader('Cache-Control', 'no-store');
 
