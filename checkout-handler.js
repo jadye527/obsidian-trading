@@ -37,10 +37,10 @@ const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 const PORT                  = process.env.PORT || 3001;
 const FRONTEND_URL          = process.env.FRONTEND_URL || 'https://obsidian.ai';
 
-// Guide file paths
+// PDF file paths
 const PDF_PATHS = {
-  starter: process.env.PDF_STARTER || path.join(__dirname, 'pdfs', 'obsidian-starter-guide.md'),
-  full:    process.env.PDF_FULL    || path.join(__dirname, 'pdfs', 'obsidian-full-system.md'),
+  starter: process.env.PDF_STARTER || path.join(__dirname, 'pdfs', 'obsidian-starter-guide.pdf'),
+  full:    process.env.PDF_FULL    || path.join(__dirname, 'pdfs', 'obsidian-full-system.pdf'),
 };
 
 // Product catalog — matches checkout.html product cards
