@@ -259,22 +259,22 @@
     // Embedded trade data (updated by deploy script)
     const DATA = {
       summary: {
-        "today_pnl": 0.0,
-        "week_pnl": -90.0,
+        "today_pnl": 0.00,
+        "week_pnl": 0.00,
         "all_time_pnl": -140.05,
         "total_trades": 17,
         "resolved_trades": 17,
         "wins": 3,
         "losses": 14,
         "win_rate": 17.65,
-        "bankroll": 186.3
+        "bankroll": 186.30
       },
       "byCity": [
         { "city": "Atlanta", "trades": 2, "wins": 0, "losses": 2, "pnl": -34.69 },
         { "city": "Chicago", "trades": 2, "wins": 2, "losses": 0, "pnl": 74.35 },
         { "city": "Dallas", "trades": 5, "wins": 1, "losses": 4, "pnl": -45.97 },
         { "city": "Miami", "trades": 5, "wins": 0, "losses": 5, "pnl": -88.74 },
-        { "city": "Seattle", "trades": 3, "wins": 0, "losses": 3, "pnl": -45.0 }
+        { "city": "Seattle", "trades": 3, "wins": 0, "losses": 3, "pnl": -45.00 }
       ],
       "bySignal": [
         { "signal": "BUY_NO", "trades": 5, "wins": 1, "losses": 4, "pnl": -37.10 },
@@ -288,8 +288,8 @@
       "chart": [
         { "day": "2026-02-20", "daily_pnl": -32.95, "cumulative_pnl": -32.95 },
         { "day": "2026-02-21", "daily_pnl": -17.10, "cumulative_pnl": -50.05 },
-        { "day": "2026-03-12", "daily_pnl": -50.0, "cumulative_pnl": -100.05 },
-        { "day": "2026-03-13", "daily_pnl": -40.0, "cumulative_pnl": -140.05 }
+        { "day": "2026-03-12", "daily_pnl": -50.00, "cumulative_pnl": -100.05 },
+        { "day": "2026-03-13", "daily_pnl": -40.00, "cumulative_pnl": -140.05 }
       ],
       "trades": [
         {"id":34,"city":"Seattle","signal_type":"BUY_NO","entry_price":0.125,"exit_price":0.125,"pnl":-10.0,"outcome":"LOSS"},
@@ -315,7 +315,7 @@
         "allowed_signals": ["BUY_NO", "BUY_YES", "bullish_upgrade", "locked_win_metar_confirmed", "low_risk_contrarian", "manual_market_buy_high_edge", "safe_bullish"]
       },
       "positions": [],
-      "lastUpdate": "2026-03-16T13:00:00Z"
+      "lastUpdate": "2026-03-18T13:00:00Z"
     };
 
     const money = (v) => { const n = Number(v||0); return `${n<0?'-':''}$${Math.abs(n).toFixed(2)}`; };
